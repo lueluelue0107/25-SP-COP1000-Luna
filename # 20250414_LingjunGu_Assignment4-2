@@ -1,0 +1,20 @@
+employeeName = input("Enter Employee Name: ")
+numShifts = int(input("Enter number of shifts: "))
+numTransactions = int(input("Enter number of transactions: "))
+transactionValue = float(input("Enter transactions dollar value: "))
+
+productivityScore = transactionValue / numTransactions / numShifts
+
+if productivityScore <= 30:
+    bonus = 50.0
+else:
+    if productivityScore <= 69:
+        bonus = 75.0
+    else:
+        if productivityScore <= 199:
+            bonus = 100.0
+        else:
+            bonus = 200.0
+
+print("Employee Name:", employeeName)
+print("Employee Bonus: $" + str(bonus))
