@@ -1,0 +1,70 @@
+def display_menu():
+    print("********************************")
+    print("AutoCountry Vehicle Finder v0.4")
+    print("********************************")
+    print("Please Enter the following number below from the following menu:\n")
+    print("1. PRINT all Authorized Vehicles")
+    print("2. SEARCH for Authorized Vehicle")
+    print("3. ADD Authorized Vehicle")
+    print("4. DELETE Authorized Vehicle")
+    print("5. Exit")
+    print("********************************")
+
+def print_vehicles(vehicle_list):
+    print("\nThe AutoCountry sales manager has authorized the purchase and selling of the following vehicles:")
+    for vehicle in vehicle_list:
+        print(vehicle)
+
+def search_vehicle(vehicle_list):
+    search = input("Please enter the name of the vehicle to search: ")
+    if search in vehicle_list:
+        print(f'"{search}" is currently an authorized vehicle.')
+    else:
+        print(f'"{search}" is NOT in the list of authorized vehicles.')
+
+def add_vehicle(vehicle_list):
+    new_vehicle = input("Please enter the name of the new vehicle to add: ")
+    if new_vehicle in vehicle_list:
+        print(f'"{new_vehicle}" is already in the list.')
+    else:
+        vehicle_list.append(new_vehicle)
+        print(f'"{new_vehicle}" has been added to the list.')
+
+def delete_vehicle(vehicle_list):
+    to_remove = input("Please Enter the full Vehicle name you would like to REMOVE:\n")
+    if to_remove in vehicle_list:
+        confirm = input(f'Are you sure you want to remove "{to_remove}" from the Authorized Vehicles List?\n').lower()
+        if confirm == "yes":
+            vehicle_list.remove(to_remove)
+            print(f'You have REMOVED "{to_remove}" as an authorized vehicle')
+        else:
+            print("Vehicle NOT removed.")
+    else:
+        print(f'"{to_remove}" was not found in the list.')
+
+def main():
+    AllowedVehiclesList = [
+        'Ford F-150', 'Chevrolet Silverado', 'Tesla CyberTruck',
+        'Toyota Tundra', 'Nissan Titan', 'Rivian R1T', 'Ram 1500'
+    ]
+    
+    while True:
+        display_menu()
+        choice = input()
+        
+        if choice == "1":
+            print_vehicles(AllowedVehiclesList)
+        elif choice == "2":
+            search_vehicle(AllowedVehiclesList)
+        elif choice == "3":
+            add_vehicle(AllowedVehiclesList)
+        elif choice == "4":
+            delete_vehicle(AllowedVehiclesList)
+        elif choice == "5":
+            print("Exiting CarFinder. Goodbye!")
+            break
+        else:
+            print("Invalid selection. Please choose a number from the menu.")
+
+if __name__ == "__main__":
+    main()
