@@ -1,0 +1,36 @@
+validDate = True
+MIN_YEAR = 0
+MIN_MONTH = 1
+MAX_MONTH = 12
+MIN_DAY = 1
+
+year = int(input("Enter year: "))
+month = int(input("Enter month: "))
+day = int(input("Enter day: "))
+
+def get_days_in_month(month, year):
+    if month == 2:
+        if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+            return 29
+        else:
+            return 28
+    elif month in [1, 3, 5, 7, 8, 10, 12]:
+        return 31
+    elif month in [4, 6, 9, 11]:
+        return 30
+    else:
+        return 0
+
+if year <= MIN_YEAR:
+    validDate = False
+elif month < MIN_MONTH or month > MAX_MONTH:
+    validDate = False
+else:
+    max_day = get_days_in_month(month, year)
+    if day < MIN_DAY or day > max_day:
+        validDate = False
+
+if validDate:
+    print(f"{month}/{day}/{year} is a valid date.")
+else:
+    print(f"{month}/{day}/{year} is an invalid date.")
