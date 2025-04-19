@@ -1,0 +1,54 @@
+# CarFinder v0.3
+
+def print_menu():
+    print("********************************")
+    print("AutoCountry Vehicle Finder v0.3")
+    print("********************************")
+    print("Please Enter the following number below from the following menu:\n")
+    print("1. PRINT all Authorized Vehicles")
+    print("2. SEARCH for Authorized Vehicle")
+    print("3. ADD Authorized Vehicle")
+    print("4. Exit")
+
+def print_vehicles(vehicle_list):
+    print("\nThe AutoCountry sales manager has authorized the purchase and selling of the following vehicles:")
+    for vehicle in vehicle_list:
+        print(vehicle)
+    print()
+
+def search_vehicle(vehicle_list):
+    print("\n********************************")
+    search = input("Please Enter the full Vehicle name you would like to search: ")
+    if search in vehicle_list:
+        print(f"\n{search} is an authorized vehicle\n")
+    else:
+        print(f"\n{search} is not an authorized vehicle, if you received this in error please check the spelling and try again\n")
+
+def add_vehicle(vehicle_list):
+    print("\n********************************")
+    new_vehicle = input("Please Enter the full Vehicle name you would like to add: ")
+    vehicle_list.append(new_vehicle)
+    print(f'\nYou have added "{new_vehicle}" as an authorized vehicle\n')
+
+def main():
+    AllowedVehiclesList = ['Ford F-150', 'Chevrolet Silverado', 'Tesla CyberTruck', 'Toyota Tundra', 'Nissan Titan']
+
+    while True:
+        print_menu()
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            print_vehicles(AllowedVehiclesList)
+        elif choice == "2":
+            search_vehicle(AllowedVehiclesList)
+        elif choice == "3":
+            add_vehicle(AllowedVehiclesList)
+        elif choice == "4":
+            print("\nThank you for using the AutoCountry Vehicle Finder, good-bye!")
+            input("Press Enter to close the program...")
+            break
+        else:
+            print("\nInvalid option. Please enter 1, 2, 3 or 4.\n")
+
+if __name__ == "__main__":
+    main()
